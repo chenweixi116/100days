@@ -828,7 +828,7 @@ busy=false;ar.style.display='block';
 
 function jump(n){gen++;TW.length=0;busy=false;FD.v=1;idx=n-1;next()}
 
-const au=new Audio();au.loop=true;if(C.audio)au.src=C.audio;
+const au=new Audio();au.loop=true;au.preload='none';const _p=au.play.bind(au);au.play=function(){if(C.audio&&!au.getAttribute('src'))au.src=C.audio;return _p()};
 
 let on=false;bm.style.opacity=.55;
 
