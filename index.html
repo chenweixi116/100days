@@ -92,7 +92,9 @@ let W,H;
 
 if(!$('bar')){W=Math.min(window.innerWidth,480);H=window.innerHeight;st.style.width=W+'px';st.style.height=H+'px'}else{W=st.clientWidth;H=st.clientHeight}
 
-const dpr=Math.min(2,window.devicePixelRatio||1),GY=H-160;
+const BR=(/MicroMessenger/i.test(navigator.userAgent)&&/iPhone|iPad|iPod/i.test(navigator.userAgent))?84:0;
+const dpr=Math.min(2,window.devicePixelRatio||1),GY=H-BR-160;
+card.style.bottom=BR?(14+BR)+'px':'calc(14px + env(safe-area-inset-bottom,0px))';
 
 ttl.style.top=Math.round(H*.12)+'px';
 
